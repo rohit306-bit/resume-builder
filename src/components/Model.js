@@ -1,4 +1,4 @@
-import  React,{useState} from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
@@ -65,9 +65,9 @@ BootstrapDialogTitle.propTypes = {
 export default function Model() {
   const [open, setOpen] = React.useState(true);
 
-//   const handleClickOpen = () => {
-//     setOpen(true);
-//   };
+  //   const handleClickOpen = () => {
+  //     setOpen(true);
+  //   };
 
   const handleClose = () => {
     setOpen(false);
@@ -92,33 +92,43 @@ export default function Model() {
   //   })
   // }
   // function handle(e){
-  //   const newdata={...data}     
+  //   const newdata={...data}
   //   newdata[e.target.id] = e.target.value
   //   setData(newdata)
   //   console.log(newdata)
   // }
 
-  const[clientName, setclientName] = useState("");
-  const[domainName, setdomainName] = useState("");
-  const[globalAdminEmailID, setglobalAdminEmailID] = useState("");
-  const[globalAdminPassword, setglobalAdminPassword] = useState("");
+  const [clientName, setclientName] = useState("");
+  const [domainName, setdomainName] = useState("");
+  const [globalAdminEmailID, setglobalAdminEmailID] = useState("");
+  const [globalAdminPassword, setglobalAdminPassword] = useState("");
 
-  function submit(){
-    console.warn({clientName, domainName, globalAdminEmailID, globalAdminPassword});
-    let data={clientName, domainName, globalAdminEmailID, globalAdminPassword}
-    fetch("http://localhost:8000/createBusiness",{
-      method: 'POST',
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+  function submit() {
+    console.warn({
+      clientName,
+      domainName,
+      globalAdminEmailID,
+      globalAdminPassword,
+    });
+    let data = {
+      clientName,
+      domainName,
+      globalAdminEmailID,
+      globalAdminPassword,
+    };
+    fetch("http://localhost:8000/createBusiness", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-      body:JSON.stringify(data)
-    }).then((result)=>{
+      body: JSON.stringify(data),
+    }).then((result) => {
       // console.warn("result", result);
-      result.json().then((resp)=>{
-        console.warn("resp", resp)
-      })
-    })
+      result.json().then((resp) => {
+        console.warn("resp", resp);
+      });
+    });
   }
 
   return (
@@ -126,8 +136,15 @@ export default function Model() {
       {/* <Button variant="contained" color="primary" onClick={handleClickOpen}>
         Add User
       </Button> */}
-      <BootstrapDialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+      <BootstrapDialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+      >
+        <BootstrapDialogTitle
+          id="customized-dialog-title"
+          onClose={handleClose}
+        >
           Add New Education
         </BootstrapDialogTitle>
         <DialogContent dividers>
@@ -143,7 +160,9 @@ export default function Model() {
           >
             <TextField
               // onChange={(e) =>handle(e)}
-              onChangeCapture={(e)=>{setclientName(e.target.value)}}
+              onChangeCapture={(e) => {
+                setclientName(e.target.value);
+              }}
               // value={data.clientName}
               value={clientName}
               // id="clientName"
@@ -154,7 +173,9 @@ export default function Model() {
             />
             <TextField
               // onChange={(e) =>handle(e)}
-              onChangeCapture={(e)=>{setdomainName(e.target.value)}}
+              onChangeCapture={(e) => {
+                setdomainName(e.target.value);
+              }}
               // value={data.domainName}
               value={domainName}
               // id="domainName"
@@ -165,7 +186,9 @@ export default function Model() {
             />
             <TextField
               // onChange={(e) =>handle(e)}
-              onChangeCapture={(e)=>{setglobalAdminEmailID(e.target.value)}}
+              onChangeCapture={(e) => {
+                setglobalAdminEmailID(e.target.value);
+              }}
               // value={data.globalAdminEmailID}
               value={globalAdminEmailID}
               // id="globalAdminEmailID"
@@ -176,7 +199,9 @@ export default function Model() {
             />
             <TextField
               // onChange={(e) =>handle(e)}
-              onChangeCapture={(e)=>{setglobalAdminPassword(e.target.value)}}
+              onChangeCapture={(e) => {
+                setglobalAdminPassword(e.target.value);
+              }}
               // value={data.globalAdminPassword}
               value={globalAdminPassword}
               // id="globalAdminPassword"
@@ -187,7 +212,9 @@ export default function Model() {
             />
             <TextField
               // onChange={(e) =>handle(e)}
-              onChangeCapture={(e)=>{setglobalAdminPassword(e.target.value)}}
+              onChangeCapture={(e) => {
+                setglobalAdminPassword(e.target.value);
+              }}
               // value={data.globalAdminPassword}
               value={globalAdminPassword}
               // id="globalAdminPassword"
@@ -199,11 +226,15 @@ export default function Model() {
               maxRows={8}
               width="200px"
             />
-            
           </Box>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={submit} variant="contained" color="primary">
+          <Button
+            autoFocus
+            onClick={submit}
+            variant="contained"
+            color="primary"
+          >
             SAVE
           </Button>
         </DialogActions>
